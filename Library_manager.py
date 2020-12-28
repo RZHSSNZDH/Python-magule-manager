@@ -39,7 +39,7 @@ list1.bind('<<ListboxSelect>>', get_lib_details)
 
 lib_name_install = Entry(libraries)
 lib_name_install.grid(row=3, column=4)
-
+# Ok
 search_box = Entry(libraries)
 search_box.grid(row=4, column=4)
 

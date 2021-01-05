@@ -46,7 +46,7 @@ e1.grid(row=4, column=3)
 
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Funcs -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-def listOfLibs(): # Update listbox and insert installed magules
+def listOfLibs(): # Update listbox and insert installed mogules
     libs_names = check_output('pip list', shell=True)
     libs_names = libs_names.decode('utf-8')
     libs_names = libs_names.split('\n')
@@ -54,14 +54,14 @@ def listOfLibs(): # Update listbox and insert installed magules
     for lib in libs_names[2:-1:]:
         list1.insert(END, lib)
 
-def delete(): # Action for delete button. deletes selected magule
+def delete(): # Action for delete button. deletes selected mogule
     call(f'pip uninstall {library_details[0]}', shell=True)
     time.sleep(1)
 
-def update(): # Action for update button. updates selected magule
+def update(): # Action for update button. updates selected mogule
     call(f'pip install {library_details[0]} -U', shell=True)
 
-def install_lib(): # Action for Install button. Installs selected magule
+def install_lib(): # Action for Install button. Installs selected mogule
     name = selected_lib
     url = f"https://pypi.org/search/?q={name}"
     response = requests.get(url)
@@ -70,7 +70,7 @@ def install_lib(): # Action for Install button. Installs selected magule
     call(f'pip install {result[0].text}', shell=True)
     listOfLibs() # Listing new list
 
-def search_in_my_magules(): # Action for Search in my magules button. Lists list of installed maguls that e1.get() is in the magules name
+def search_in_my_mogules(): # Action for Search in my mogules button. Lists list of installed maguls that e1.get() is in the mogules name
     libs_names = check_output('pip list', shell=True)
     libs_names = libs_names.decode('utf-8')
     libs_names = libs_names.split('\n')
@@ -86,8 +86,8 @@ def search_in_pypi(): # Action for Search in Pypi button. Lists results of e1.ge
     result = soup.find_all("span", attrs={"class": "package-snippet__name"})
     list1.delete(0,END)
     result = result[::-1]
-    for magule in result:
-        list1.insert(0, magule.text)
+    for mogule in result:
+        list1.insert(0, mogule.text)
     b4.grid(row=4, column=4)
 
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Buttons -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -106,7 +106,7 @@ b4 = Button(libraries, text='Install library', width=20, command=install_lib)
 b5 = Button(libraries, text='Exit', width=20, command=exit)
 b5.grid(row=1, column=4)
 
-b6 = Button(libraries, text='Search in my magules', width=20, command=search_in_my_magules)
+b6 = Button(libraries, text='Search in my mogules', width=20, command=search_in_my_mogules)
 b6.grid(row=3, column=4)
 
 b7 = Button(libraries, text='Search in Pypi', width=20, command=search_in_pypi)
